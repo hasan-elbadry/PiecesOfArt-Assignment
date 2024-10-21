@@ -1,8 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using PiecesOfArt_Assignment.DAL.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<AppDbContext>(
+    opt => opt
+    .UseSqlServer(builder
+    .Configuration
+    .GetConnectionString("defaultConnection")));
 
 var app = builder.Build();
 
