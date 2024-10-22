@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PiecesOfArt_Assignment.DAL.Models;
+using PiecesOfArt_Assignment.Models;
 
-namespace PiecesOfArt_Assignment.DAL.Data
+namespace PiecesOfArt_Assignment.Data
 {
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -88,7 +88,7 @@ namespace PiecesOfArt_Assignment.DAL.Data
                     Password = "SecurePassword123!",
                     Age = 28,
                     loyaltyCardId = 1,
-                    
+
                 },
                 new User
                 {

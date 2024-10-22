@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PiecesOfArt_Assignment.DAL.Models
+namespace PiecesOfArt_Assignment.Dtos.LoyaltyCardDtos
 {
-    public class Category
+    public class LoyaltyCardDto
     {
         public byte Id { get; set; }
 
@@ -11,7 +11,5 @@ namespace PiecesOfArt_Assignment.DAL.Models
 
         [Required, MaxLength(170)]
         public string Description { get; set; } = string.Empty;
-
-        public IEnumerable<PieceOfArt> PieceOfArts { get; set; } = Enumerable.Empty<PieceOfArt>();
     }
 }

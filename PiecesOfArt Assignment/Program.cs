@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using PiecesOfArt_Assignment.DAL.Data;
+using PiecesOfArt_Assignment.Data;
+using PiecesOfArt_Assignment.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,9 @@ builder.Services.AddDbContext<AppDbContext>(
     .UseSqlServer(builder
     .Configuration
     .GetConnectionString("defaultConnection")));
+
+builder.Services.AddTransient(typeof(IBaseRepository<>),typeof(BaseRepository<>));
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

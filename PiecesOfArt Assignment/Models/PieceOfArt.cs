@@ -1,10 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PiecesOfArt_Assignment.DAL.Models
+namespace PiecesOfArt_Assignment.Models
 {
     public class PieceOfArt
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public byte Id { get; set; }
+
         [Required, MaxLength(170)]
         public string Title { get; set; } = string.Empty;
 

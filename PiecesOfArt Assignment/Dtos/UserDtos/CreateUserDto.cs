@@ -1,15 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PiecesOfArt_Assignment.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace PiecesOfArt_Assignment.DAL.Models
+namespace PiecesOfArt_Assignment.Dtos.UserDtos
 {
-    public class User
+    public class CreateUserDto
     {
-        public byte Id { get; set; }
-
         [Required, MaxLength(170)]
         public string Name { get; set; } = string.Empty;
 
-        [Required, MaxLength(70),EmailAddress]
+        [Required, MaxLength(170), EmailAddress]
         public string Email { get; set; } = string.Empty;
 
         [Required, MaxLength(250)]
@@ -18,10 +17,7 @@ namespace PiecesOfArt_Assignment.DAL.Models
         [Required]
         public byte Age { get; set; }
 
-        public IEnumerable<PieceOfArt>? PieceOfArts { get; set; } = Enumerable.Empty<PieceOfArt>();
-
+        [Required]
         public byte? loyaltyCardId { get; set; }
-
-        public LoyaltyCard LoyaltyCard { get; set; } = default!;
     }
 }

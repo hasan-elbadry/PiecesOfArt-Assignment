@@ -8,64 +8,67 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PiecesOfArt_Assignment.Migrations
 {
     /// <inheritdoc />
-    public partial class inital_tables_with_data : Migration
+    public partial class Initial_tables_with_data : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false),
+                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "LoyaltyCard",
+                name: "LoyaltyCards",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false),
+                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LoyaltyCard", x => x.Id);
+                    table.PrimaryKey("PK_LoyaltyCards", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false),
+                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Age = table.Column<byte>(type: "tinyint", nullable: false),
-                    loyaltyCardId = table.Column<byte>(type: "tinyint", nullable: false)
+                    loyaltyCardId = table.Column<byte>(type: "tinyint", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_User_LoyaltyCard_loyaltyCardId",
+                        name: "FK_Users_LoyaltyCards_loyaltyCardId",
                         column: x => x.loyaltyCardId,
-                        principalTable: "LoyaltyCard",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "LoyaltyCards",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "PieceOfArt",
+                name: "PieceOfArts",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false),
+                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Price = table.Column<double>(type: "float", maxLength: 170, nullable: false),
                     PublicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -74,23 +77,23 @@ namespace PiecesOfArt_Assignment.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PieceOfArt", x => x.Id);
+                    table.PrimaryKey("PK_PieceOfArts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PieceOfArt_Category_CategoryId",
+                        name: "FK_PieceOfArts_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PieceOfArt_User_UserId",
+                        name: "FK_PieceOfArts_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
@@ -102,7 +105,7 @@ namespace PiecesOfArt_Assignment.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "LoyaltyCard",
+                table: "LoyaltyCards",
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
@@ -114,7 +117,7 @@ namespace PiecesOfArt_Assignment.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "User",
+                table: "Users",
                 columns: new[] { "Id", "Age", "Email", "Name", "Password", "loyaltyCardId" },
                 values: new object[,]
                 {
@@ -126,7 +129,7 @@ namespace PiecesOfArt_Assignment.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "PieceOfArt",
+                table: "PieceOfArts",
                 columns: new[] { "Id", "CategoryId", "Price", "PublicationDate", "Title", "UserId" },
                 values: new object[,]
                 {
@@ -136,18 +139,18 @@ namespace PiecesOfArt_Assignment.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PieceOfArt_CategoryId",
-                table: "PieceOfArt",
+                name: "IX_PieceOfArts_CategoryId",
+                table: "PieceOfArts",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PieceOfArt_UserId",
-                table: "PieceOfArt",
+                name: "IX_PieceOfArts_UserId",
+                table: "PieceOfArts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_loyaltyCardId",
-                table: "User",
+                name: "IX_Users_loyaltyCardId",
+                table: "Users",
                 column: "loyaltyCardId");
         }
 
@@ -155,16 +158,16 @@ namespace PiecesOfArt_Assignment.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PieceOfArt");
+                name: "PieceOfArts");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "LoyaltyCard");
+                name: "LoyaltyCards");
         }
     }
 }

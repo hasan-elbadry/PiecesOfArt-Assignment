@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PiecesOfArt_Assignment.DAL.Data;
+using PiecesOfArt_Assignment.Data;
 
 #nullable disable
 
 namespace PiecesOfArt_Assignment.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241021173046_inital_tables_with_data")]
-    partial class inital_tables_with_data
+    [Migration("20241022090426_Initial_tables_with_data")]
+    partial class Initial_tables_with_data
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,10 +25,13 @@ namespace PiecesOfArt_Assignment.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.Category", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.Category", b =>
                 {
                     b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -42,7 +45,7 @@ namespace PiecesOfArt_Assignment.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -77,10 +80,13 @@ namespace PiecesOfArt_Assignment.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.LoyaltyCard", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.LoyaltyCard", b =>
                 {
                     b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -94,7 +100,7 @@ namespace PiecesOfArt_Assignment.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LoyaltyCard");
+                    b.ToTable("LoyaltyCards");
 
                     b.HasData(
                         new
@@ -129,10 +135,13 @@ namespace PiecesOfArt_Assignment.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.PieceOfArt", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.PieceOfArt", b =>
                 {
                     b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
 
                     b.Property<byte>("CategoryId")
                         .HasColumnType("tinyint");
@@ -158,7 +167,7 @@ namespace PiecesOfArt_Assignment.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PieceOfArt");
+                    b.ToTable("PieceOfArts");
 
                     b.HasData(
                         new
@@ -190,18 +199,21 @@ namespace PiecesOfArt_Assignment.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.User", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.User", b =>
                 {
                     b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
 
                     b.Property<byte>("Age")
                         .HasColumnType("tinyint");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(70)
-                        .HasColumnType("nvarchar(70)");
+                        .HasMaxLength(170)
+                        .HasColumnType("nvarchar(170)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -213,14 +225,14 @@ namespace PiecesOfArt_Assignment.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<byte>("loyaltyCardId")
+                    b.Property<byte?>("loyaltyCardId")
                         .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 
                     b.HasIndex("loyaltyCardId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
@@ -270,15 +282,15 @@ namespace PiecesOfArt_Assignment.Migrations
                         });
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.PieceOfArt", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.PieceOfArt", b =>
                 {
-                    b.HasOne("PiecesOfArt_Assignment.DAL.Models.Category", "Category")
+                    b.HasOne("PiecesOfArt_Assignment.Models.Category", "Category")
                         .WithMany("PieceOfArts")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PiecesOfArt_Assignment.DAL.Models.User", "User")
+                    b.HasOne("PiecesOfArt_Assignment.Models.User", "User")
                         .WithMany("PieceOfArts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -289,28 +301,26 @@ namespace PiecesOfArt_Assignment.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.User", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.User", b =>
                 {
-                    b.HasOne("PiecesOfArt_Assignment.DAL.Models.LoyaltyCard", "LoyaltyCard")
+                    b.HasOne("PiecesOfArt_Assignment.Models.LoyaltyCard", "LoyaltyCard")
                         .WithMany("Users")
-                        .HasForeignKey("loyaltyCardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("loyaltyCardId");
 
                     b.Navigation("LoyaltyCard");
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.Category", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.Category", b =>
                 {
                     b.Navigation("PieceOfArts");
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.LoyaltyCard", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.LoyaltyCard", b =>
                 {
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("PiecesOfArt_Assignment.DAL.Models.User", b =>
+            modelBuilder.Entity("PiecesOfArt_Assignment.Models.User", b =>
                 {
                     b.Navigation("PieceOfArts");
                 });

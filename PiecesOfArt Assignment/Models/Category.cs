@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PiecesOfArt_Assignment.DAL.Models
+namespace PiecesOfArt_Assignment.Models
 {
-    public class LoyaltyCard
+    public class Category
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public byte Id { get; set; }
 
         [Required, MaxLength(170)]
@@ -12,6 +14,6 @@ namespace PiecesOfArt_Assignment.DAL.Models
         [Required, MaxLength(170)]
         public string Description { get; set; } = string.Empty;
 
-        public IEnumerable<User> Users { get; set; } = Enumerable.Empty<User>();
+        public IEnumerable<PieceOfArt> PieceOfArts { get; set; } = Enumerable.Empty<PieceOfArt>();
     }
 }
