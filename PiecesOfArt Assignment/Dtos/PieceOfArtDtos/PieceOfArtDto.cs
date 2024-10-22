@@ -5,7 +5,7 @@ namespace PiecesOfArt_Assignment.Dtos.PieceOfArtDtos
 {
     public class PieceOfArtDto
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [Required, MaxLength(170)]
         public string Title { get; set; } = string.Empty;

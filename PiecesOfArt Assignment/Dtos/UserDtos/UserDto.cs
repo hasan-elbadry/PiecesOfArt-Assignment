@@ -7,7 +7,7 @@ namespace PiecesOfArt_Assignment.Dtos.UserDtos
 {
     public class UserDto
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [Required, MaxLength(170)]
         public string Name { get; set; } = string.Empty;
@@ -19,7 +19,7 @@ namespace PiecesOfArt_Assignment.Dtos.UserDtos
         public string Password { get; set; } = string.Empty;
 
         [Required]
-        public byte Age { get; set; }
+        public int Age { get; set; }
 
         public IEnumerable<PieceOfArtDto>? PieceOfArts { get; set; }
 

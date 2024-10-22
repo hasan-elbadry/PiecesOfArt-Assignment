@@ -1,12 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PiecesOfArt_Assignment.Models
+﻿namespace PiecesOfArt_Assignment.Models
 {
     public class User
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public byte Id { get; set; }
+        
+        public int Id { get; set; }
 
         [Required, MaxLength(170)]
         public string Name { get; set; } = string.Empty;
@@ -18,12 +15,12 @@ namespace PiecesOfArt_Assignment.Models
         public string Password { get; set; } = string.Empty;
 
         [Required]
-        public byte Age { get; set; }
+        public int Age { get; set; }
 
-        public IEnumerable<PieceOfArt>? PieceOfArts { get; set; } = Enumerable.Empty<PieceOfArt>();
+        public IEnumerable<PieceOfArt>? PieceOfArts { get; set; }
 
-        public byte? loyaltyCardId { get; set; }
-
+        public int? loyaltyCardId { get; set; }
+        
         public LoyaltyCard LoyaltyCard { get; set; } = default!;
     }
 }

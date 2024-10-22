@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PiecesOfArt_Assignment.Data;
-using PiecesOfArt_Assignment.Models;
-
-namespace PiecesOfArt_Assignment.Repository
+﻿namespace PiecesOfArt_Assignment.Repository
 {
     public class UserRepository : IUserRepository
     {
@@ -16,9 +12,9 @@ namespace PiecesOfArt_Assignment.Repository
         public IEnumerable<User> GetAll()
         {
             return _context.Users
-                .Include(x => x.PieceOfArts)
-                    .ThenInclude(pa => pa.Category)
-                .Include(x => x.LoyaltyCard)
+                .Include(x=>x.LoyaltyCard)
+                .Include(x=>x.PieceOfArts!)
+                .ThenInclude(x=>x.Category)
                 .ToList();
         }
     }

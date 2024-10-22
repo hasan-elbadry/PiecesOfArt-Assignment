@@ -1,6 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using PiecesOfArt_Assignment.Data;
-using PiecesOfArt_Assignment.Repository;
+using PiecesOfArt_Assignment.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +14,8 @@ builder.Services.AddDbContext<AppDbContext>(
 
 builder.Services.AddTransient(typeof(IBaseRepository<>),typeof(BaseRepository<>));
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
+
 
 var app = builder.Build();
 

@@ -18,7 +18,7 @@ namespace PiecesOfArt_Assignment.Repository
 
         }
 
-        public T? getById(byte id)
+        public T? getById(int id)
         {
             return _context.Set<T>().Find(id);
         }
@@ -34,7 +34,7 @@ namespace PiecesOfArt_Assignment.Repository
             var success = await _context.SaveChangesAsync();
             return success > 0 ? true : false;
         }
-        public async Task<bool> DeleteAsync(byte id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
 

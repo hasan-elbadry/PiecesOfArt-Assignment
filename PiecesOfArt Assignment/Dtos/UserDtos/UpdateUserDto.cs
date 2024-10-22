@@ -5,7 +5,7 @@ namespace PiecesOfArt_Assignment.Dtos.UserDtos
 {
     public class UpdateUserDto
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [Required, MaxLength(170)]
         public string Name { get; set; } = string.Empty;
@@ -17,10 +17,10 @@ namespace PiecesOfArt_Assignment.Dtos.UserDtos
         public string Password { get; set; } = string.Empty;
 
         [Required]
-        public byte Age { get; set; }
+        public int Age { get; set; }
 
         public IEnumerable<int>? PieceOfArts { get; set; } = Enumerable.Empty<int>();
 
-        public byte? loyaltyCardId { get; set; }
+        public int? loyaltyCardId { get; set; }
     }
 }

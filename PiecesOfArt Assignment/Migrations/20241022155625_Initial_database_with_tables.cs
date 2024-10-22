@@ -1,14 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-#nullable disable
+﻿#nullable disable
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace PiecesOfArt_Assignment.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial_tables_with_data : Migration
+    public partial class Initial_database_with_tables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +14,7 @@ namespace PiecesOfArt_Assignment.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false)
@@ -31,7 +28,7 @@ namespace PiecesOfArt_Assignment.Migrations
                 name: "LoyaltyCards",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false)
@@ -45,13 +42,13 @@ namespace PiecesOfArt_Assignment.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    Age = table.Column<byte>(type: "tinyint", nullable: false),
-                    loyaltyCardId = table.Column<byte>(type: "tinyint", nullable: true)
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    loyaltyCardId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -67,13 +64,13 @@ namespace PiecesOfArt_Assignment.Migrations
                 name: "PieceOfArts",
                 columns: table => new
                 {
-                    Id = table.Column<byte>(type: "tinyint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(170)", maxLength: 170, nullable: false),
                     Price = table.Column<double>(type: "float", maxLength: 170, nullable: false),
                     PublicationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<byte>(type: "tinyint", nullable: false),
-                    CategoryId = table.Column<byte>(type: "tinyint", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,11 +94,11 @@ namespace PiecesOfArt_Assignment.Migrations
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
-                    { (byte)1, "A 19th-century art movement characterized by small.", "Impressionism" },
-                    { (byte)2, "A period in European history and wisdom.", "Renaissance" },
-                    { (byte)3, "Art that uses shapes.", "Abstract" },
-                    { (byte)4, "A broad category during the late 19th to mid-20th century.", "Modern" },
-                    { (byte)5, "Art from ancient, Mesopotamian, and classical Greek.", "Ancient" }
+                    { 1, "A 19th-century art movement characterized by small.", "Impressionism" },
+                    { 2, "A period in European history and wisdom.", "Renaissance" },
+                    { 3, "Art that uses shapes.", "Abstract" },
+                    { 4, "A broad category during the late 19th to mid-20th century.", "Modern" },
+                    { 5, "Art from ancient, Mesopotamian, and classical Greek.", "Ancient" }
                 });
 
             migrationBuilder.InsertData(
@@ -109,11 +106,11 @@ namespace PiecesOfArt_Assignment.Migrations
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
-                    { (byte)1, "10% Off", "Bronze" },
-                    { (byte)2, "20% Off", "Silver" },
-                    { (byte)3, "30% Off", "Gold" },
-                    { (byte)4, "40% Off", "Platinum" },
-                    { (byte)5, "50% Off", "Crystal" }
+                    { 1, "10% Off", "Bronze" },
+                    { 2, "20% Off", "Silver" },
+                    { 3, "30% Off", "Gold" },
+                    { 4, "40% Off", "Platinum" },
+                    { 5, "50% Off", "Crystal" }
                 });
 
             migrationBuilder.InsertData(
@@ -121,11 +118,11 @@ namespace PiecesOfArt_Assignment.Migrations
                 columns: new[] { "Id", "Age", "Email", "Name", "Password", "loyaltyCardId" },
                 values: new object[,]
                 {
-                    { (byte)1, (byte)28, "alice.johnson@example.com", "Alice Johnson", "SecurePassword123!", (byte)1 },
-                    { (byte)2, (byte)35, "bob.smith@example.com", "Bob Smith", "Password456!", (byte)2 },
-                    { (byte)3, (byte)42, "charlie.brown@example.com", "Charlie Brown", "Passw0rd789!", (byte)3 },
-                    { (byte)4, (byte)30, "diana.prince@example.com", "Diana Prince", "WonderWoman321!", (byte)4 },
-                    { (byte)5, (byte)38, "edward.nygma@example.com", "Edward Nygma", "RiddleMeThis456!", (byte)5 }
+                    { 1, 28, "alice.johnson@example.com", "Alice Johnson", "SecurePassword123!", 1 },
+                    { 2, 35, "bob.smith@example.com", "Bob Smith", "Password456!", 2 },
+                    { 3, 42, "charlie.brown@example.com", "Charlie Brown", "Passw0rd789!", 3 },
+                    { 4, 30, "diana.prince@example.com", "Diana Prince", "WonderWoman321!", 4 },
+                    { 5, 38, "edward.nygma@example.com", "Edward Nygma", "RiddleMeThis456!", 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -133,9 +130,9 @@ namespace PiecesOfArt_Assignment.Migrations
                 columns: new[] { "Id", "CategoryId", "Price", "PublicationDate", "Title", "UserId" },
                 values: new object[,]
                 {
-                    { (byte)1, (byte)1, 100000.0, new DateTime(1889, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Starry Night", (byte)1 },
-                    { (byte)2, (byte)2, 500000.0, new DateTime(1503, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Mona Lisa", (byte)2 },
-                    { (byte)3, (byte)3, 120000.0, new DateTime(1923, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Composition VIII", (byte)3 }
+                    { 1, 1, 100000.0, new DateTime(1889, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Starry Night", 1 },
+                    { 2, 2, 500000.0, new DateTime(1503, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "The Mona Lisa", 2 },
+                    { 3, 3, 120000.0, new DateTime(1923, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Composition VIII", 3 }
                 });
 
             migrationBuilder.CreateIndex(

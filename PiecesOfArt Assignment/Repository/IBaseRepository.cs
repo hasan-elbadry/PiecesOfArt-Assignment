@@ -2,10 +2,10 @@
 {
     public interface IBaseRepository<T> where T : class
     {
-        T? getById(byte id);
+        T? getById(int id);
         IEnumerable<T> getAll();
         Task<bool> AddAsync(T entity);
         Task<bool> UpdateAsync(T entity);
-        Task<bool> DeleteAsync(byte id);
+        Task<bool> DeleteAsync(int id);
     }
 }

@@ -4,7 +4,7 @@ namespace PiecesOfArt_Assignment.Dtos.CategoryDtos
 {
     public class CategoryDto
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         [Required, MaxLength(170)]
         public string Name { get; set; } = string.Empty;

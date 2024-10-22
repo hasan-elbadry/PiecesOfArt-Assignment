@@ -1,0 +1,9 @@
+﻿global using System.Text.Json.Serialization;
+global using System.ComponentModel.DataAnnotations;
+global using PiecesOfArt_Assignment.Models;
+global using Microsoft.EntityFrameworkCore.Migrations;
+global using Microsoft.EntityFrameworkCore;
+global using PiecesOfArt_Assignment.Data;
+global using Microsoft.AspNetCore.Mvc;
+global using PiecesOfArt_Assignment.Dtos.UserDtos;
+global using PiecesOfArt_Assignment.Repository;

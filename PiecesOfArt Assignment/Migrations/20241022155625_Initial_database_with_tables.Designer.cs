@@ -12,8 +12,8 @@ using PiecesOfArt_Assignment.Data;
 namespace PiecesOfArt_Assignment.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241022090426_Initial_tables_with_data")]
-    partial class Initial_tables_with_data
+    [Migration("20241022155625_Initial_database_with_tables")]
+    partial class Initial_database_with_tables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,11 @@ namespace PiecesOfArt_Assignment.Migrations
 
             modelBuilder.Entity("PiecesOfArt_Assignment.Models.Category", b =>
                 {
-                    b.Property<byte>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -50,31 +50,31 @@ namespace PiecesOfArt_Assignment.Migrations
                     b.HasData(
                         new
                         {
-                            Id = (byte)1,
+                            Id = 1,
                             Description = "A 19th-century art movement characterized by small.",
                             Name = "Impressionism"
                         },
                         new
                         {
-                            Id = (byte)2,
+                            Id = 2,
                             Description = "A period in European history and wisdom.",
                             Name = "Renaissance"
                         },
                         new
                         {
-                            Id = (byte)3,
+                            Id = 3,
                             Description = "Art that uses shapes.",
                             Name = "Abstract"
                         },
                         new
                         {
-                            Id = (byte)4,
+                            Id = 4,
                             Description = "A broad category during the late 19th to mid-20th century.",
                             Name = "Modern"
                         },
                         new
                         {
-                            Id = (byte)5,
+                            Id = 5,
                             Description = "Art from ancient, Mesopotamian, and classical Greek.",
                             Name = "Ancient"
                         });
@@ -82,11 +82,11 @@ namespace PiecesOfArt_Assignment.Migrations
 
             modelBuilder.Entity("PiecesOfArt_Assignment.Models.LoyaltyCard", b =>
                 {
-                    b.Property<byte>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -105,31 +105,31 @@ namespace PiecesOfArt_Assignment.Migrations
                     b.HasData(
                         new
                         {
-                            Id = (byte)1,
+                            Id = 1,
                             Description = "10% Off",
                             Name = "Bronze"
                         },
                         new
                         {
-                            Id = (byte)2,
+                            Id = 2,
                             Description = "20% Off",
                             Name = "Silver"
                         },
                         new
                         {
-                            Id = (byte)3,
+                            Id = 3,
                             Description = "30% Off",
                             Name = "Gold"
                         },
                         new
                         {
-                            Id = (byte)4,
+                            Id = 4,
                             Description = "40% Off",
                             Name = "Platinum"
                         },
                         new
                         {
-                            Id = (byte)5,
+                            Id = 5,
                             Description = "50% Off",
                             Name = "Crystal"
                         });
@@ -137,14 +137,14 @@ namespace PiecesOfArt_Assignment.Migrations
 
             modelBuilder.Entity("PiecesOfArt_Assignment.Models.PieceOfArt", b =>
                 {
-                    b.Property<byte>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<byte>("CategoryId")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasMaxLength(170)
@@ -158,8 +158,8 @@ namespace PiecesOfArt_Assignment.Migrations
                         .HasMaxLength(170)
                         .HasColumnType("nvarchar(170)");
 
-                    b.Property<byte>("UserId")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -172,43 +172,43 @@ namespace PiecesOfArt_Assignment.Migrations
                     b.HasData(
                         new
                         {
-                            Id = (byte)1,
-                            CategoryId = (byte)1,
+                            Id = 1,
+                            CategoryId = 1,
                             Price = 100000.0,
                             PublicationDate = new DateTime(1889, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Starry Night",
-                            UserId = (byte)1
+                            UserId = 1
                         },
                         new
                         {
-                            Id = (byte)2,
-                            CategoryId = (byte)2,
+                            Id = 2,
+                            CategoryId = 2,
                             Price = 500000.0,
                             PublicationDate = new DateTime(1503, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Mona Lisa",
-                            UserId = (byte)2
+                            UserId = 2
                         },
                         new
                         {
-                            Id = (byte)3,
-                            CategoryId = (byte)3,
+                            Id = 3,
+                            CategoryId = 3,
                             Price = 120000.0,
                             PublicationDate = new DateTime(1923, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Composition VIII",
-                            UserId = (byte)3
+                            UserId = 3
                         });
                 });
 
             modelBuilder.Entity("PiecesOfArt_Assignment.Models.User", b =>
                 {
-                    b.Property<byte>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<byte>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<byte>("Age")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -225,8 +225,8 @@ namespace PiecesOfArt_Assignment.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<byte?>("loyaltyCardId")
-                        .HasColumnType("tinyint");
+                    b.Property<int?>("loyaltyCardId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -237,48 +237,48 @@ namespace PiecesOfArt_Assignment.Migrations
                     b.HasData(
                         new
                         {
-                            Id = (byte)1,
-                            Age = (byte)28,
+                            Id = 1,
+                            Age = 28,
                             Email = "alice.johnson@example.com",
                             Name = "Alice Johnson",
                             Password = "SecurePassword123!",
-                            loyaltyCardId = (byte)1
+                            loyaltyCardId = 1
                         },
                         new
                         {
-                            Id = (byte)2,
-                            Age = (byte)35,
+                            Id = 2,
+                            Age = 35,
                             Email = "bob.smith@example.com",
                             Name = "Bob Smith",
                             Password = "Password456!",
-                            loyaltyCardId = (byte)2
+                            loyaltyCardId = 2
                         },
                         new
                         {
-                            Id = (byte)3,
-                            Age = (byte)42,
+                            Id = 3,
+                            Age = 42,
                             Email = "charlie.brown@example.com",
                             Name = "Charlie Brown",
                             Password = "Passw0rd789!",
-                            loyaltyCardId = (byte)3
+                            loyaltyCardId = 3
                         },
                         new
                         {
-                            Id = (byte)4,
-                            Age = (byte)30,
+                            Id = 4,
+                            Age = 30,
                             Email = "diana.prince@example.com",
                             Name = "Diana Prince",
                             Password = "WonderWoman321!",
-                            loyaltyCardId = (byte)4
+                            loyaltyCardId = 4
                         },
                         new
                         {
-                            Id = (byte)5,
-                            Age = (byte)38,
+                            Id = 5,
+                            Age = 38,
                             Email = "edward.nygma@example.com",
                             Name = "Edward Nygma",
                             Password = "RiddleMeThis456!",
-                            loyaltyCardId = (byte)5
+                            loyaltyCardId = 5
                         });
                 });
 

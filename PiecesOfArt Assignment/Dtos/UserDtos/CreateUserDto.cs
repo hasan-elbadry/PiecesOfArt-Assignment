@@ -15,9 +15,9 @@ namespace PiecesOfArt_Assignment.Dtos.UserDtos
         public string Password { get; set; } = string.Empty;
 
         [Required]
-        public byte Age { get; set; }
+        public int Age { get; set; }
 
         [Required]
-        public byte? loyaltyCardId { get; set; }
+        public int? loyaltyCardId { get; set; }
     }
 }
