@@ -1,7 +1,4 @@
-﻿using PiecesOfArt_Assignment.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace PiecesOfArt_Assignment.Dtos.UserDtos
+﻿namespace PiecesOfArt_Assignment.Dtos.UserDtos
 {
     public class CreateUserDto
     {

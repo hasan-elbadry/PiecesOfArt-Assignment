@@ -1,5 +1,3 @@
-using PiecesOfArt_Assignment.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

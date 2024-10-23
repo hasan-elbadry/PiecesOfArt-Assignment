@@ -1,8 +1,4 @@
-﻿using PiecesOfArt_Assignment.Dtos.CategoryDtos;
-using PiecesOfArt_Assignment.Dtos.LoyaltyCardDtos;
-using PiecesOfArt_Assignment.Dtos.PieceOfArtDtos;
-
-namespace PiecesOfArt_Assignment.Services
+﻿namespace PiecesOfArt_Assignment.Services
 {
     public class UserService : IUserService
     {

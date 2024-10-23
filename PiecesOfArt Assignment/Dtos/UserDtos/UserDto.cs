@@ -1,9 +1,4 @@
-﻿using PiecesOfArt_Assignment.Dtos.LoyaltyCardDtos;
-using PiecesOfArt_Assignment.Dtos.PieceOfArtDtos;
-using PiecesOfArt_Assignment.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace PiecesOfArt_Assignment.Dtos.UserDtos
+﻿namespace PiecesOfArt_Assignment.Dtos.UserDtos
 {
     public class UserDto
     {

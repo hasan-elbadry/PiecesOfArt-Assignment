@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PiecesOfArt_Assignment.Dtos.LoyaltyCardDtos
+﻿namespace PiecesOfArt_Assignment.Dtos.LoyaltyCardDtos
 {
     public class LoyaltyCardDto
     {

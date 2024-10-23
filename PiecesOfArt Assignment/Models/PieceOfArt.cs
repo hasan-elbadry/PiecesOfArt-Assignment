@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-
-namespace PiecesOfArt_Assignment.Models
+﻿namespace PiecesOfArt_Assignment.Models
 {
     public class PieceOfArt
     {

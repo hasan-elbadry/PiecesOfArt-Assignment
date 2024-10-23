@@ -1,7 +1,4 @@
-﻿using PiecesOfArt_Assignment.Dtos.CategoryDtos;
-using System.ComponentModel.DataAnnotations;
-
-namespace PiecesOfArt_Assignment.Dtos.PieceOfArtDtos
+﻿namespace PiecesOfArt_Assignment.Dtos.PieceOfArtDtos
 {
     public class PieceOfArtDto
     {

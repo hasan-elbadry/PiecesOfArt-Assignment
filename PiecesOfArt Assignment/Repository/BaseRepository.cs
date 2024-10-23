@@ -1,7 +1,4 @@
-﻿
-using PiecesOfArt_Assignment.Data;
-
-namespace PiecesOfArt_Assignment.Repository
+﻿namespace PiecesOfArt_Assignment.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {

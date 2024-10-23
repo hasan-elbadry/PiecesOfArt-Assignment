@@ -7,3 +7,8 @@ global using PiecesOfArt_Assignment.Data;
 global using Microsoft.AspNetCore.Mvc;
 global using PiecesOfArt_Assignment.Dtos.UserDtos;
 global using PiecesOfArt_Assignment.Repository;
+global using PiecesOfArt_Assignment.Services;
+global using PiecesOfArt_Assignment.Dtos.CategoryDtos;
+global using PiecesOfArt_Assignment.Dtos.LoyaltyCardDtos;
+global using PiecesOfArt_Assignment.Dtos.PieceOfArtDtos;
+global using Microsoft.EntityFrameworkCore.Infrastructure;

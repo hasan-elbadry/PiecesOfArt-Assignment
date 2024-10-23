@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PiecesOfArt_Assignment.Models;
-
-namespace PiecesOfArt_Assignment.Data
+﻿namespace PiecesOfArt_Assignment.Data
 {
     public class AppDbContext : DbContext
     {
@@ -77,8 +74,6 @@ namespace PiecesOfArt_Assignment.Data
                Description = "Art from ancient, Mesopotamian, and classical Greek."
            }
        );
-
-
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
@@ -129,7 +124,7 @@ namespace PiecesOfArt_Assignment.Data
             );
 
             modelBuilder.Entity<PieceOfArt>().HasData(
-         new PieceOfArt
+                 new PieceOfArt
          {
              Id = 1,
              Title = "Starry Night",
@@ -138,7 +133,7 @@ namespace PiecesOfArt_Assignment.Data
              UserId = 1, // Alice Johnson
              CategoryId = 1 // Impressionism
          },
-         new PieceOfArt
+                 new PieceOfArt
          {
              Id = 2,
              Title = "The Mona Lisa",
@@ -147,7 +142,7 @@ namespace PiecesOfArt_Assignment.Data
              UserId = 2, // Bob Smith
              CategoryId = 2 // Renaissance
          },
-         new PieceOfArt
+                 new PieceOfArt
          {
              Id = 3,
              Title = "Composition VIII",
@@ -156,7 +151,14 @@ namespace PiecesOfArt_Assignment.Data
              UserId = 3, // Charlie Brown
              CategoryId = 3 // Abstract
          }
-     );
+            );
+
+
+
+            modelBuilder
+                .Entity<PieceOfArt>()
+                .HasIndex(x => x.Title)
+                .IsUnique(true);
         }
 
         public DbSet<User> Users { get; set; }
