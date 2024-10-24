@@ -13,6 +13,8 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddTransient(typeof(IBaseRepository<>),typeof(BaseRepository<>));
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 
 var app = builder.Build();
