@@ -7,10 +7,11 @@
         [Required, MaxLength(170)]
         public string Title { get; set; } = string.Empty;
 
-        [Required, MaxLength(170)]
+        [Required]
         public double Price { get; set; }
 
         public DateTime PublicationDate { get; set; } = DateTime.Now;
-        public CategoryDto Category { get; set; } = default!;
+
+        public int CategoryId { get; set; }
     }
 }

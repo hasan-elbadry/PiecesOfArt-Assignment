@@ -8,13 +8,12 @@
         [Required, MaxLength(170)]
         public string Title { get; set; } = string.Empty;
 
-        [Required, MaxLength(170)]
+        [Required]
         public double Price { get; set; }
 
         public DateTime PublicationDate { get; set; } = DateTime.Now;
 
-        public int UserId { get; set; }
-        [JsonIgnore]
+        public int? UserId { get; set; }
         public User? User { get; set; }
 
         public int CategoryId { get; set; }
