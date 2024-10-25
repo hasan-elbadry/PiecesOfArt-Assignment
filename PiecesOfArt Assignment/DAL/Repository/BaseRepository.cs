@@ -11,10 +11,9 @@ namespace PiecesOfArt_Assignment.DAL.Repository
             _context = context;
         }
 
-        public IEnumerable<T> getAll()
+        public virtual IEnumerable<T> getAll()
         {
             return _context.Set<T>().ToList();
-
         }
 
         public T? getById(int id)

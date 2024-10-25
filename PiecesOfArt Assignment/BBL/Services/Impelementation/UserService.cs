@@ -1,45 +1,37 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using PiecesOfArt_Assignment.BBL.Dtos.UserDtos;
-using PiecesOfArt_Assignment.BBL.Services.Interfaces;
-using PiecesOfArt_Assignment.DAL.Repository;
-
-namespace PiecesOfArt_Assignment.BBL.Services.Impelementation
+﻿namespace PiecesOfArt_Assignment.BBL.Services.Impelementation
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IBaseRepository<User> _baseRepository;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IMapper mapper, IBaseRepository<User> baseRepository)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
-            _baseRepository = baseRepository;
         }
 
         public async Task<bool> AddAsync(CreateUserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
-            return await _baseRepository.AddAsync(user);
+            return await _userRepository.AddAsync(user);
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
-            return await _baseRepository.DeleteAsync(id);
+            return await _userRepository.DeleteAsync(id);
         }
 
         public IEnumerable<UserDto> GetAll()
         {
-            var users = _userRepository.GetAll();
+            var users = _userRepository.getAll();
             var usersDto = _mapper.Map<IEnumerable<UserDto>>(users);
             return usersDto;
         }
 
         public UserDto getById(int id)
         {
-            var user = _baseRepository.getById(id);
+            var user = _userRepository.getById(id);
             return _mapper.Map<UserDto>(user);
         }
 
@@ -49,7 +41,7 @@ namespace PiecesOfArt_Assignment.BBL.Services.Impelementation
             var pieceOfArts = _userRepository.isAvaliblePieceOfArts(userDto.PieceOfArts!);
             user.PieceOfArts = pieceOfArts;
 
-            return await _baseRepository.UpdateAsync(user);
+            return await _userRepository.UpdateAsync(user);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PiecesOfArt_Assignment.Controllers
+﻿namespace PiecesOfArt_Assignment.PL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -4,24 +4,22 @@ using System.Data.SqlTypes;
 
 namespace PiecesOfArt_Assignment.DAL.Repository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         private readonly AppDbContext _context;
 
- 
-
-        public UserRepository(AppDbContext context)
+        public UserRepository(AppDbContext context) : base(context)
         {
             _context = context;
-        }
+        } 
 
-        public IEnumerable<User> GetAll()
+        public override IEnumerable<User> getAll()
         {
             return _context.Users
-                .Include(x => x.LoyaltyCard)
-                .Include(x => x.PieceOfArts!)
-                .ThenInclude(x => x.Category)
-                .ToList();
+            .Include(x => x.LoyaltyCard)
+            .Include(x => x.PieceOfArts!)
+            .ThenInclude(x => x.Category)
+            .ToList();
         }
 
         public IEnumerable<PieceOfArt> isAvaliblePieceOfArts(IEnumerable<int> PieceOfArtsId)

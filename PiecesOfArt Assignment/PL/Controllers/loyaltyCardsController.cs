@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PiecesOfArt_Assignment.BBL.Services.Interfaces;
 
-namespace PiecesOfArt_Assignment.Controllers
+namespace PiecesOfArt_Assignment.PL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,11 +24,11 @@ namespace PiecesOfArt_Assignment.Controllers
         [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
-            var loyaltyCard  = _LoyaltyCardService.getById(id);
-            if (loyaltyCard  == null)
+            var loyaltyCard = _LoyaltyCardService.getById(id);
+            if (loyaltyCard == null)
                 return NotFound();
 
-            return Ok(loyaltyCard );
+            return Ok(loyaltyCard);
         }
 
         [HttpPut]

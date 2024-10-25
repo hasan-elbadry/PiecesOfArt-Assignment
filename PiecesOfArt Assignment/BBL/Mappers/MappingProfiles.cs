@@ -1,10 +1,4 @@
-﻿using PiecesOfArt_Assignment.BBL.Dtos.CategoryDtos;
-using PiecesOfArt_Assignment.BBL.Dtos.LoyaltyCardDtos;
-using PiecesOfArt_Assignment.BBL.Dtos.PieceOfArtDtos;
-using PiecesOfArt_Assignment.BBL.Dtos.UserDtos;
-using PiecesOfArt_Assignment.DAL.Models;
-
-namespace PiecesOfArt_Assignment.BBL.Mappers
+﻿namespace PiecesOfArt_Assignment.BBL.Mappers
 {
     public class MappingProfiles : Profile
     {
@@ -13,8 +7,6 @@ namespace PiecesOfArt_Assignment.BBL.Mappers
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
             CreateMap<CreateUserDto, User>();
-
-
             CreateMap<UpdateUserDto, User>()
                 .ForMember(x => x.PieceOfArts, op => op.Ignore());
 
@@ -25,8 +17,6 @@ namespace PiecesOfArt_Assignment.BBL.Mappers
             CreateMap<LoyaltyCard, LoyaltyCardDto>();
             CreateMap<CreateLoyaltyCardDto, LoyaltyCard>();
             CreateMap<UpdateLoyaltyCardDto, LoyaltyCard>();
-
-
 
             CreateMap<Category, CategoryDto>();
             CreateMap<CreateCategoryDto, Category>();

@@ -2,9 +2,8 @@
 
 namespace PiecesOfArt_Assignment.DAL.Repository
 {
-    public interface IUserRepository
+    public interface IUserRepository : IBaseRepository<User>
     {
-        IEnumerable<User> GetAll();
         public IEnumerable<PieceOfArt> isAvaliblePieceOfArts(IEnumerable<int> PieceOfArtsId);
     }
 }

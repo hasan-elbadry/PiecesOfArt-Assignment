@@ -3,7 +3,7 @@ using PiecesOfArt_Assignment.BBL.Services.Interfaces;
 using PiecesOfArt_Assignment.DAL.Models;
 using PiecesOfArt_Assignment.DAL.Repository;
 
-namespace PiecesOfArt_Assignment.Controllers
+namespace PiecesOfArt_Assignment.PL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

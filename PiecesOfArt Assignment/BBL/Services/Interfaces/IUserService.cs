@@ -1,6 +1,4 @@
-﻿using PiecesOfArt_Assignment.BBL.Dtos.UserDtos;
-
-namespace PiecesOfArt_Assignment.BBL.Services.Interfaces
+﻿namespace PiecesOfArt_Assignment.BBL.Services.Interfaces
 {
     public interface IUserService
     {
